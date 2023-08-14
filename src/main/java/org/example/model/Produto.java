@@ -1,25 +1,15 @@
 package org.example.model;
 import java.time.LocalDate;
 
-public class Produto {
-  public Integer id;
+public class Produto extends EntityId {
+  private String nome;
 
-  public String nome;
-
-  public String descicao;
-  public Double precoVenda;
-  public Double precoCompra;
-  public LocalDate dataValidade;
-  public LocalDate dataPrazo;
-  public Status status;
-
-  public Integer getId() {
-    return id;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
-  }
+  private String descicao;
+  private Double precoVenda;
+  private Double precoCompra;
+  private LocalDate dataValidade;
+  private LocalDate dataPrazo;
+  private Status status;
 
   public String getNome() {
     return nome;
@@ -43,6 +33,9 @@ public class Produto {
 
   public void setPrecoVenda(Double precoVenda) {
     this.precoVenda = precoVenda;
+    if(this.calcularMargemDeLucro() < 20.0){
+      System.out.println("A Margem de lucro deve ser maior ou igual a 20");
+    }
   }
 
   public Double getPrecoCompra() {
@@ -83,8 +76,10 @@ public class Produto {
     return margemLucro;
   }
 
-  public Produto(Integer id, String nome, String descicao, Double precoVenda, Double precoCompra, LocalDate dataValidade, LocalDate dataPrazo, Status status) {
-    this.id = id;
+  public Produto() {
+  }
+
+  public Produto(String nome, String descicao, Double precoVenda, Double precoCompra, LocalDate dataValidade, LocalDate dataPrazo, Status status) {
     this.nome = nome;
     this.descicao = descicao;
     this.precoVenda = precoVenda;
