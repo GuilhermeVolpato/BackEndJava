@@ -14,13 +14,13 @@ public class Application {
 //                Status.DISPONIVEL);
         Produto produto = new Produto();
         produto.setNome("Impressora 3D HP");
-        produto.setDescicao("Impressora 3D filamento XYZ");
+        produto.setDescricao("Impressora 3D filamento XYZ");
         produto.setDataPrazo(LocalDate.of(2023, 01, 15));
         produto.setPrecoCompra(1200.00);
-        produto.setPrecoVenda(1400.00);
+        produto.setValorUnitario(1400.00);
         produto.setStatus(Status.DISPONIVEL);
 
-        System.out.println("Margem: " + produto.calcularMargemDeLucro() + "%");
+        //System.out.println("Margem: " + produto.calcularMargemDeLucro() + "%");
 
         Fornecedor dell = new Fornecedor();
         dell.setNome("Dell Computadores");
