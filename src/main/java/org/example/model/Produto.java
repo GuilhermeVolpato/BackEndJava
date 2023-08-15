@@ -79,6 +79,11 @@ public class Produto extends EntityId {
   public Produto() {
   }
 
+  public Produto(String nome, String descicao) {
+    this.nome = nome;
+    this.descicao = descicao;
+  }
+
   public Produto(String nome, String descicao, Double precoVenda, Double precoCompra, LocalDate dataValidade, LocalDate dataPrazo, Status status) {
     this.nome = nome;
     this.descicao = descicao;

@@ -1,12 +1,16 @@
 package org.example.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Venda extends EntityId{
   private LocalDate dataVenda;
   private FormaPagamento formaPagamento;
   private Cliente cliente;
   private String observacao;
+
+  private List<ItemVenda> itens = new ArrayList<>();
 
   public LocalDate getDataVenda() {
     return dataVenda;
@@ -39,4 +43,17 @@ public class Venda extends EntityId{
   public void setObservacao(String observacao) {
     this.observacao = observacao;
   }
+
+  public void addItemVenda(ItemVenda item) {
+    itens.add(item);
+  }
+
+  public void delItemVenda(ItemVenda item) {
+    itens.remove(item);
+  }
+
+  public List<ItemVenda> getItens() {
+    return itens;
+  }
+
 }
