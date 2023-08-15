@@ -1,11 +1,8 @@
 package org.example.model;
 import java.time.LocalDate;
 
-public class Produto extends EntityId {
+public class Produto extends ItemVendavel {
   private String nome;
-
-  private String descicao;
-  private Double precoVenda;
   private Double precoCompra;
   private LocalDate dataValidade;
   private LocalDate dataPrazo;
@@ -17,25 +14,6 @@ public class Produto extends EntityId {
 
   public void setNome(String nome) {
     this.nome = nome;
-  }
-
-  public String getDescicao() {
-    return descicao;
-  }
-
-  public void setDescicao(String descicao) {
-    this.descicao = descicao;
-  }
-
-  public Double getPrecoVenda() {
-    return precoVenda;
-  }
-
-  public void setPrecoVenda(Double precoVenda) {
-    this.precoVenda = precoVenda;
-    if(this.calcularMargemDeLucro() < 20.0){
-      System.out.println("A Margem de lucro deve ser maior ou igual a 20");
-    }
   }
 
   public Double getPrecoCompra() {
@@ -70,27 +48,29 @@ public class Produto extends EntityId {
     this.status = status;
   }
 
-  public Double calcularMargemDeLucro(){
-    double lucro =precoVenda - precoCompra;
-    double margemLucro = (lucro/precoCompra)*100;
-    return margemLucro;
-  }
-
   public Produto() {
   }
 
   public Produto(String nome, String descicao) {
     this.nome = nome;
-    this.descicao = descicao;
+    super.setDescricao(descicao);
   }
 
   public Produto(String nome, String descicao, Double precoVenda, Double precoCompra, LocalDate dataValidade, LocalDate dataPrazo, Status status) {
     this.nome = nome;
-    this.descicao = descicao;
-    this.precoVenda = precoVenda;
+    super.setDescricao(descicao);
+    super.setValorUnitario(precoVenda);
     this.precoCompra = precoCompra;
     this.dataValidade = dataValidade;
     this.dataPrazo = dataPrazo;
     this.status = status;
+  }
+
+  @Override
+  public String toString() {
+    return "Produto{" +
+            "nome='" + nome + '\'' +
+            ", descicao='" + super.getDescricao() + '\'' +
+            '}';
   }
 }
