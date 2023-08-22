@@ -1,10 +1,12 @@
 package org.example.model;
 
-public class Pessoa extends EntityId{
+public abstract class Pessoa extends EntityId{
   private String nome;
   private String telefone;
   private String endereco;
   private String email;
+
+  public abstract String getDocumentoPricipal();
 
   public String getNome() {
     return nome;
