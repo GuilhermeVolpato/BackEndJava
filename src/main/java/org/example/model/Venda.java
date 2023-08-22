@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Venda extends EntityId{
+public class Venda extends EntityId implements OperacaoFinanceira{
   private LocalDate dataVenda;
   private FormaPagamento formaPagamento;
   private Cliente cliente;
@@ -56,4 +56,18 @@ public class Venda extends EntityId{
     return itens;
   }
 
+  @Override
+  public LocalDate getDataOperacao() {
+    return this.getDataVenda();
+  }
+
+  @Override
+  public Double getValorTotalOperacao() {
+    return this.getItens().stream().mapToDouble(ItemVenda::getVendaValorCalculado).sum();
+  }
+
+  @Override
+  public TipoOperacao getTipoOperacao() {
+    return TipoOperacao.CREDITO;
+  }
 }

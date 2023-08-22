@@ -3,6 +3,15 @@ package org.example.model;
 public class ItemVendavel extends EntityId{
   private String descricao;
   private Double valorUnitario;
+  private Boolean estocavel;
+
+  public Boolean getEstocavel() {
+    return estocavel;
+  }
+
+  public void setEstocavel(Boolean estocavel) {
+    this.estocavel = estocavel;
+  }
 
   public String getDescricao() {
     return descricao;
@@ -20,4 +29,12 @@ public class ItemVendavel extends EntityId{
     this.valorUnitario = valorUnitario;
   }
 
+  @Override
+  public String toString() {
+    return "ItemVendavel{" +
+            "descricao='" + descricao + '\'' +
+            ", valorUnitario=" + valorUnitario +
+            ", estocavel=" + estocavel +
+            '}';
+  }
 }

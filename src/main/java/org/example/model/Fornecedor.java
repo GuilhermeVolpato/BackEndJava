@@ -20,4 +20,9 @@ public class Fornecedor extends Pessoa {
   public void setInscricaoEstadual(String inscricaoEstadual) {
     this.inscricaoEstadual = inscricaoEstadual;
   }
+
+  @Override
+  public String getDocumentoPricipal() {
+    return this.getCnpj();
+  }
 }
