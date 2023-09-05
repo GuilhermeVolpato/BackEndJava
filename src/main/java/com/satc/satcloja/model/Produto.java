@@ -1,11 +1,22 @@
 package com.satc.satcloja.model;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.time.LocalDate;
 
+@Entity
 public class Produto extends ItemVendavel {
+  @Column(name = "nome", length = 100, nullable = false)
   private String nome;
+  @Column(name = "preco_compra", nullable = false)
   private Double precoCompra;
+  @Column(name = "dt_validade", nullable = false)
   private LocalDate dataValidade;
+  @Column(name = "dt_prazo", nullable = false)
   private LocalDate dataPrazo;
+  @Enumerated(EnumType.ORDINAL)
+  @Column(name = "status")
   private Status status;
 
   public String getNome() {
