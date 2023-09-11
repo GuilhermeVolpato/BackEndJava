@@ -17,6 +17,14 @@ public class ItemLocacao extends EntityId{
     @Column(name = "desconto")
     private Double desconto;
 
+    public Locacao getLocacao() {
+        return locacao;
+    }
+
+    public void setLocacao(Locacao locacao) {
+        this.locacao = locacao;
+    }
+
     @ManyToOne
     @JoinColumn(name = "locacao_id")
     private Locacao locacao;

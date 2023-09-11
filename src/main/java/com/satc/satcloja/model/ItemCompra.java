@@ -25,6 +25,14 @@ public class ItemCompra extends EntityId{
         return produto;
     }
 
+    public Compra getCompra() {
+        return compra;
+    }
+
+    public void setCompra(Compra compra) {
+        this.compra = compra;
+    }
+
     public void setProduto(Produto produto) {
         this.produto = produto;
     }

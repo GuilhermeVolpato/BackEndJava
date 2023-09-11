@@ -1,15 +1,16 @@
 package com.satc.satcloja.model;
 
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo_item")
 public class ItemVendavel extends EntityId{
-  @Column(name = "descicao", nullable = false)
+  @Column(name = "descicao")
   private String descricao;
-  @Column(name = "valor_unitario", nullable = false)
+  @Column(name = "valor_unitario")
   private Double valorUnitario;
-  @Column(name = "estocavel", nullable = true)
+  @Column(name = "estocavel")
   private Boolean estocavel;
 
   public Boolean getEstocavel() {

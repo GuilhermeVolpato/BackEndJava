@@ -1,11 +1,33 @@
 package com.satc.satcloja.model;
 
-public class ItemVenda extends EntityId{
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
+@Entity
+public class ItemVenda extends EntityId{
+  @ManyToOne
+  @JoinColumn(name = "produto_servico_id")
   private ItemVendavel produtoServico;
+  @Column(name = "valor_unitario", nullable = false)
   private Double valorUnitario;
+  @Column(name = "quantidade", nullable = false)
   private Double quantidade;
+  @Column(name = "desconto", nullable = false)
   private Double desconto;
+
+  public Venda getVenda() {
+    return venda;
+  }
+
+  public void setVenda(Venda venda) {
+    this.venda = venda;
+  }
+
+  @ManyToOne
+  @JoinColumn(name = "venda_id")
+  private Venda venda;
 
   public ItemVendavel getProdutoServico() {
     return produtoServico;
