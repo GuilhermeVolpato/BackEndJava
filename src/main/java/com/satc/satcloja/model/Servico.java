@@ -4,10 +4,20 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
+@Entity
 @DiscriminatorValue("servico")
-public class Servico extends ItemVendavel{
-  @Column(name = "qtde_horas", nullable = false)
+public class Servico extends ItemVendavel {
+  @Column(name = "qtde_horas")
   private Double quantidadeHoras;
+
+  public Servico() {
+  }
+
+  public Servico(String descricao, Double quantidadeHoras, Double valor) {
+    super.setDescricao(descricao);
+    this.quantidadeHoras = quantidadeHoras;
+    super.setValorUnitario(valor);
+  }
 
   public Double getQuantidadeHoras() {
     return quantidadeHoras;
@@ -17,12 +27,6 @@ public class Servico extends ItemVendavel{
     this.quantidadeHoras = quantidadeHoras;
   }
 
-  public Servico(String descricao, Double quantidadeHoras, Double valor) {
-    super.setDescricao(descricao);
-    this.quantidadeHoras = quantidadeHoras;
-    super.setValorUnitario(valor);
-  }
-
   @Override
   public Boolean getEstocavel() {
     return false;
@@ -30,9 +34,13 @@ public class Servico extends ItemVendavel{
 
   @Override
   public String toString() {
-    return "Produto{" +
-            ", descicao= '" + super.getDescricao() + '\'' +
-            ",quantidadeHora= " + quantidadeHoras + '\'' +
+    return "Servico{" +
+            "descricao=" + super.getDescricao() + ", " +
+            "quantidadeHoras=" + quantidadeHoras +
             '}';
   }
 }
+
+
+
+
